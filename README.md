@@ -13,15 +13,6 @@ of elements covered by a `Spliterator` could be, for example, an array, a
 `Collection`, an IO channel, or a generator function.
 
 ### methods
-
-
-If this Spliterator is 
-`ORDERED` the action is performed on the next element in encounter.
-
-
-
-
-
 * `boolean tryAdvance(Consumer<? super T> action);` - 
 If a remaining element exists, performs the given action on it,
 returning true; else returns false.  
@@ -121,6 +112,8 @@ from:
     returns null.  Otherwise, if the source is not SORTED, 
     throws IllegalStateException.
     
+### Spliterator.OfPrimitive
+
 ## StreamSupport
 Low-level utility methods for creating and manipulating streams.
 
@@ -137,6 +130,7 @@ the various Stream classes.
                                          int characteristics,
                                          boolean parallel)`
 * similar methods for `long` and `double`
+
 # Spliterators
 Static classes and methods for operating on or creating instances of
 Spliterator and its primitive specializations like `Spliterator.OfInt`.
@@ -153,9 +147,9 @@ characteristics for the spliterator to report; it is common to
 additionally specify `IMMUTABLE` and `ORDERED`.
 
 ```
-
+Spliterators.spliterator(new int[]{1, 2, 3}, IMMUTABLE | ORDERED);
 ```
 ```
+// SIZED, SUBSIZED, ORDERED, IMMUTABLE
 Spliterator.OfInt spliterator = Arrays.spliterator(new int[]{1, 2, 3});
 ```
-## Spliterator.OfPrimitive
