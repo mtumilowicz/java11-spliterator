@@ -15,8 +15,7 @@ of elements covered by a `Spliterator` could be, for example, an array, a
 ### methods
 * `boolean tryAdvance(Consumer<? super T> action);` - 
 If a remaining element exists, performs the given action on it,
-returning true; else returns false.  
-order.
+returning true; else returns false.
 * `default void forEachRemaining(Consumer<? super T> action)` - 
 Performs the given action for each remaining element, sequentially in
 the current thread, until all elements have been processed or the action
@@ -26,7 +25,7 @@ partitioned, returns a Spliterator covering elements, that will,
 upon return from this method, not be covered by this Spliterator.
     
   **returns** a `Spliterator` covering some portion of the
-  elements, or null if this spliterator cannot be 
+  elements, or null if this spliterator cannot be split
   
 * `long estimateSize();` - Returns an estimate of the number of elements 
 that would be encountered by a `forEachRemaining` traversal, or 
@@ -49,28 +48,28 @@ self explanatory
     ```
 * `int characteristics();` - returns a set of characteristics of this 
 Spliterator and its elements. The result is represented as ORed values 
-from:
+(https://github.com/mtumilowicz/java11-ORed-container) from:
     * `ORDERED`
     
        Characteristic value signifying that an encounter order is 
-       defined for elements. If so, this Spliterator guarantees 
-       that method trySplit splits a strict prefix of elements, that 
-       method tryAdvance steps by one element in prefix order, and that
-       forEachRemaining performs actions in encounter order.
+       defined for elements. If so, this `Spliterator` guarantees 
+       that method `trySplit` splits a strict prefix of elements, that 
+       method `tryAdvance` steps by one element in prefix order, and that
+       `forEachRemaining` performs actions in encounter order.
     * `DISTINCT`
     
        Characteristic value signifying that, for each pair of
-       encountered elements !x.equals(y).
+       encountered elements `!x.equals(y)`.
     * `SORTED`
     
        Characteristic value signifying that encounter order follows a defined
        sort order. If so, method `getComparator()` returns the associated
-       Comparator, or null if all elements are Comparable and
+       `Comparator`, or null if all elements are `Comparable` and
        are sorted by their natural ordering.
     * `SIZED`
     
        Characteristic value signifying that the value returned from
-       estimateSize() prior to traversal or splitting represents a
+       `estimateSize()` prior to traversal or splitting represents a
        finite size that, in the absence of structural source modification,
        represents an exact count of the number of elements that would be
        encountered by a complete traversal.
@@ -85,32 +84,33 @@ from:
        or removed, so such changes cannot occur during traversal.
     * `CONCURRENT`
     
-       Characteristic value signifying that the element source may be safely
-       concurrently modified (allowing additions, replacements, and/or removals)
-       by multiple threads without external synchronization. If so, the
-       Spliterator is expected to have a documented policy concerning the impact
-       of modifications during traversal.
+       Characteristic value signifying that the element source may be 
+       safely concurrently modified (allowing additions, replacements, 
+       and/or removals) by multiple threads without external 
+       synchronization. If so, the `Spliterator` is expected to have a 
+       documented policy concerning the impact of modifications during 
+       traversal.
        
-       A top-level Spliterator should not report both CONCURRENT and
-       SIZED, since the finite size, if known, may change if the source
+       A top-level `Spliterator` should not report both `CONCURRENT` and
+       `SIZED`, since the finite size, if known, may change if the source
        is concurrently modified during traversal.
        
     * `SUBSIZED`
-       Characteristic value signifying that all Spliterators resulting 
-       from trySplit() will be both SIZED and SUBSIZED.
-       (This means that all child Spliterators, whether direct or 
-       indirect, will be SIZED.)
+       Characteristic value signifying that all `Spliterators` resulting 
+       from `trySplit()` will be both `SIZED` and `SUBSIZED`.
+       (This means that all child `Spliterators`, whether direct or 
+       indirect, will be `SIZED`.)
   
        Some spliterators, such as the top-level spliterator for an
-       approximately balanced binary tree, will report SIZED but not
-       SUBSIZED, since it is common to know the size of the entire tree
+       approximately balanced binary tree, will report `SIZED` but not
+       `SUBSIZED`, since it is common to know the size of the entire tree
        but not the exact sizes of subtrees.
 * `default boolean hasCharacteristics(int characteristics)`
 * `default Comparator<? super T> getComparator()` - If this 
-    Spliterator's source is SORTED by a Comparator, returns that 
-    Comparator. If the source is SORTED in Comparable natural order, 
-    returns null.  Otherwise, if the source is not SORTED, 
-    throws IllegalStateException.
+    Spliterator's source is `SORTED` by a `Comparator`, returns that 
+    `Comparator`. If the source is `SORTED` in Comparable natural order, 
+    returns null.  Otherwise, if the source is not `SORTED`, 
+    throws `IllegalStateException`.
     
 ### Spliterator.OfPrimitive
 
@@ -139,7 +139,7 @@ This method is provided as an implementation convenience for
 Spliterators which store portions of their elements in arrays, and need
 fine control over Spliterator characteristics.  Most other situations in
 which a Spliterator for an array is needed should use
-Arrays#spliterator(T/int/double/long[]).
+`Arrays#spliterator(T/int/double/long[])`.
 
 The returned spliterator always reports the characteristics
 `SIZED` and `SUBSIZED`.  The caller may provide additional
@@ -153,3 +153,5 @@ Spliterators.spliterator(new int[]{1, 2, 3}, IMMUTABLE | ORDERED);
 // SIZED, SUBSIZED, ORDERED, IMMUTABLE
 Spliterator.OfInt spliterator = Arrays.spliterator(new int[]{1, 2, 3});
 ```
+
+# project description
