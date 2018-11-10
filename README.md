@@ -104,8 +104,6 @@ from:
        SIZED, since the finite size, if known, may change if the source
        is concurrently modified during traversal.
        
-       
-  
     * `SUBSIZED`
        Characteristic value signifying that all Spliterators resulting 
        from trySplit() will be both SIZED and SUBSIZED.
