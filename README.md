@@ -114,9 +114,30 @@ from:
        approximately balanced binary tree, will report SIZED but not
        SUBSIZED, since it is common to know the size of the entire tree
        but not the exact sizes of subtrees.
-
+* `default boolean hasCharacteristics(int characteristics)`
+* `default Comparator<? super T> getComparator()` - If this 
+    Spliterator's source is SORTED by a Comparator, returns that 
+    Comparator. If the source is SORTED in Comparable natural order, 
+    returns null.  Otherwise, if the source is not SORTED, 
+    throws IllegalStateException.
+    
 ## StreamSupport
-## Spliterators
+Low-level utility methods for creating and manipulating streams.
+
+This class is mostly for library writers presenting stream views
+of data structures; most static stream methods intended for end users are in
+the various Stream classes.
+
+* `public static <T> Stream<T> stream(Spliterator<T> spliterator, boolean parallel)`
+* `public static <T> Stream<T> stream(Supplier<? extends Spliterator<T>> supplier,
+                                          int characteristics,
+                                          boolean parallel)`
+* `public static IntStream intStream(Spliterator.OfInt spliterator, boolean parallel)`
+* `public static IntStream intStream(Supplier<? extends Spliterator.OfInt> supplier,
+                                         int characteristics,
+                                         boolean parallel)`
+* similar methods for `long` and `double`
+# Spliterators
 Static classes and methods for operating on or creating instances of
 Spliterator and its primitive specializations like `Spliterator.OfInt`.
 
