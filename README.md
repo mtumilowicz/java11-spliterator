@@ -168,3 +168,8 @@ Spliterator.OfInt spliterator = Arrays.spliterator(new int[]{1, 2, 3});
 We provide tests for:
 * `SpliteratorOfIntTest` - example of methods of `SpliteratorOfInt`
 * `SpliteratorTest` - example of methods of `SpliteratorTest`
+* `SpliteratorsTest` - example of obtaining OfInt spliterator
+with dedicated characteristics.
+
+Note that `StreamSupport` examples are in: 
+https://github.com/mtumilowicz/java11-spliterator-forkjoin.
