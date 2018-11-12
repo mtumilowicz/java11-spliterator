@@ -1,6 +1,8 @@
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.TreeSet;
 
 import static java.util.Spliterator.*;
 import static org.hamcrest.CoreMatchers.is;
@@ -10,13 +12,13 @@ import static org.junit.Assert.*;
  * Created by mtumilowicz on 2018-11-12.
  */
 public class SpliteratorTest {
-    
+
     @Test
     public void tryAdvance_nonEmpty() {
 //        given
         var integers = List.of(1, 2, 3, 4);
         var spliterator = integers.spliterator();
-        
+
 //        expect
         assertTrue(spliterator.tryAdvance(System.out::println));
     }
@@ -52,26 +54,26 @@ public class SpliteratorTest {
         assertThat(spliterator.getExactSizeIfKnown(), is(3L));
         spliterator.forEachRemaining(System.out::println);
         assertThat(spliterator.getExactSizeIfKnown(), is(0L));
-        
+
         System.out.println("---");
-        
+
         assertThat(splitted.getExactSizeIfKnown(), is(2L));
         splitted.forEachRemaining(System.out::println);
         assertThat(splitted.getExactSizeIfKnown(), is(0L));
     }
-    
+
     @Test
-    public void estimateSize(){
+    public void estimateSize() {
 //        given
         var integers = List.of(1, 2, 3, 4, 5);
         var spliterator = integers.spliterator();
-        
+
 //        expect
         assertThat(spliterator.estimateSize(), is(5L));
     }
 
     @Test
-    public void getExactSizeIfKnown(){
+    public void getExactSizeIfKnown() {
 //        given
         var integers = List.of(1, 2, 3, 4, 5);
         var spliterator = integers.spliterator();
@@ -81,7 +83,7 @@ public class SpliteratorTest {
     }
 
     @Test
-    public void list_hasCharacteristics(){
+    public void list_hasCharacteristics() {
 //        given
         var integers = List.of(1, 2, 3, 4, 5);
         var spliterator = integers.spliterator();
@@ -98,7 +100,7 @@ public class SpliteratorTest {
     }
 
     @Test
-    public void treeSet_hasCharacteristics(){
+    public void treeSet_hasCharacteristics() {
 //        given
         var integers = new TreeSet<Integer>();
         var spliterator = integers.spliterator();
@@ -115,7 +117,7 @@ public class SpliteratorTest {
     }
 
     @Test
-    public void treeSet_getComparator(){
+    public void treeSet_getComparator() {
 //        given
         var integers = new TreeSet<Integer>(Comparator.naturalOrder());
         var spliterator = integers.spliterator();

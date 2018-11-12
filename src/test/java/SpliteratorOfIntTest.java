@@ -81,7 +81,7 @@ public class SpliteratorOfIntTest {
     }
 
     @Test
-    public void list_hasCharacteristics() {
+    public void hasCharacteristics() {
 //        given
         var integers = new int[]{1, 2, 3, 4};
         var spliterator = Arrays.spliterator(integers);
