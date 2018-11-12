@@ -165,3 +165,6 @@ Spliterator.OfInt spliterator = Arrays.spliterator(new int[]{1, 2, 3});
 ```
 
 # project description
+We provide tests for:
+* `SpliteratorOfIntTest` - example of methods of `SpliteratorOfInt`
+* `SpliteratorTest` - example of methods of `SpliteratorTest`
