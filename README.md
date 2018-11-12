@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mtumilowicz/java11-spliterator.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-spliterator)
+
 # java11-spliterator
 Overview of spliterator inferface.
 
