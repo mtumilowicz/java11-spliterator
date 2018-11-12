@@ -113,6 +113,14 @@ Spliterator and its elements. The result is represented as ORed values
     throws `IllegalStateException`.
     
 ### Spliterator.OfPrimitive
+A Spliterator specialized for primitive values.
+
+Note that this interface extends `Spliterator<T>`.
+
+We have three main primitive spliterators:
+1. `OfInt`
+1. `OfLong`
+1. `OfDouble`
 
 ## StreamSupport
 Low-level utility methods for creating and manipulating streams.
