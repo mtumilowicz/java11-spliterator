@@ -6,6 +6,8 @@ _Reference_: https://docs.oracle.com/javase/8/docs/api/java/util/stream/StreamSu
 _Reference_: https://www.baeldung.com/java-spliterator
 
 # preface
+To see exemplary implementation of Spliterator please refer my other
+github project: https://github.com/mtumilowicz/java11-spliterator-forkjoin
 
 ## Spliterator
 An object for traversing and partitioning elements of a source.  The source
